@@ -10,7 +10,7 @@ extensions:
   basicauth/otlp:
     client_auth:
       username: 736067
-      password: glc_eyJvIjoiOTQwNjE0IiwibiI6InN0YWNrLTczNjA2Ny1odC1yZWFkLW9wZW50ZWxlbWV0cnktdHJhY2VzIiwiayI6ImI1Wnk2eTQwUTBNSTBENGNWYmszVTJlMiIsIm0iOnsiciI6InByb2QtdXMtZWFzdC0wIn19
+      password: glc_eyJvIjoiOTQwNjE0IiwibiI6InN0YWNrLTczNjA2Ny1odC13cml0ZS1uZXd0ZW1wb3Rva2VuIiwiayI6IjBwMzI2MHVyaHI1UWlCRXdKRTIwOFMzZCIsIm0iOnsiciI6InByb2QtdXMtZWFzdC0wIn19
 
 exporters:
   otlphttp:
