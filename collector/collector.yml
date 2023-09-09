@@ -18,9 +18,6 @@ exporters:
       authenticator: basicauth/otlp
     endpoint: https://otlp-gateway-prod-us-east-0.grafana.net/otlp
 
-extensions:
-  health_check:
-
 service:
   extensions: [basicauth/otlp]
   pipelines:
