@@ -1,7 +1,7 @@
 const start =  require('./tracer');
 start('employee-service'); 
 const express = require('express');
-const PORT = parseInt(process.env.PORT || '8080');
+const PORT = parseInt(process.env.PORT || '8082');
 const app = express();
 const axios = require("axios")
 
