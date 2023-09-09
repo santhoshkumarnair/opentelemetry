@@ -1,0 +1,30 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+      grpc:
+        endpoint: 0.0.0.0:4317
+
+extensions:
+  basicauth/otlp:
+    client_auth:
+      username: 736067
+      password: glc_eyJvIjoiOTQwNjE0IiwibiI6InN0YWNrLTczNjA2Ny1odC1yZWFkLW9wZW50ZWxlbWV0cnktdHJhY2VzIiwiayI6ImI1Wnk2eTQwUTBNSTBENGNWYmszVTJlMiIsIm0iOnsiciI6InByb2QtdXMtZWFzdC0wIn19
+
+exporters:
+  otlphttp:
+    auth:
+      authenticator: basicauth/otlp
+    endpoint: https://otlp-gateway-prod-us-east-0.grafana.net/otlp
+
+extensions:
+  health_check:
+
+service:
+  extensions: [basicauth/otlp]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: []
+      exporters: [otlphttp]
