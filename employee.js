@@ -8,7 +8,7 @@ const axios = require("axios")
 
 const calls = meter.createHistogram('http-calls');
 
-const sleep = (time: number) => { return new Promise((resolve) => { setTimeout(resolve, time) }) };
+const sleep = (time) => { return new Promise((resolve) => { setTimeout(resolve, time) }) };
 
 app.use((req,res,next)=>{
     const startTime = Date.now();
