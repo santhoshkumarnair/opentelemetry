@@ -1,13 +1,31 @@
 const start =  require('./tracer');
-start('employee-service'); 
+const meter = start('employee-service'); 
 const express = require('express');
 const PORT = parseInt(process.env.PORT || '8080');
 const app = express();
 const axios = require("axios")
 
 
+const calls = meter.createHistogram('http-calls');
+
+app.use((req,res,next)=>{
+    const startTime = Date.now();
+    req.on('end',()=>{
+        const endTime = Date.now();
+        calls.record(endTime-startTime,{
+            route: req.route?.path,
+            status: res.statusCode,
+            method: req.method
+        })
+    })
+    next();
+})
 
 app.get('/employees', async (req, res) => {
+
+    if(req.query['fail']){
+        res.sendStatus(500)
+    }
     const employee = [
         {
             name: "Employee 1",
