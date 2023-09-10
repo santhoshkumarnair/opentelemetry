@@ -19,7 +19,14 @@ function start(serviceName) {
             [SemanticResourceAttributes.SERVICE_NAME]: serviceName,
         }),
     });    
-    meterProvider.addMetricReader(exporter);
+
+    const metricReader = new PeriodicExportingMetricReader({
+        exporter: new OTLPMetricExporter({
+            url:'http://collector:4318/v1/metrics'
+        })
+    })
+
+    meterProvider.addMetricReader(metricReader);
     const meter = meterProvider.getMeter(serviceName);
 
     const traceExporter = new OTLPTraceExporter({
