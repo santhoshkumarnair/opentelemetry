@@ -1,5 +1,5 @@
-const start =  require('./tracer');
-const meter = start('employee-service'); 
+const start = require('./tracer');
+const meter = start('employee-service');
 const express = require('express');
 const PORT = parseInt(process.env.PORT || '8080');
 const app = express();
@@ -8,13 +8,21 @@ const axios = require("axios")
 
 const calls = meter.createHistogram('http-calls');
 
+let counter = meter.createCounter(
+    'http.server.request_per_name.counter',
+    {
+        description: 'The number of requests per name the server got',
+    }
+);
+
 const sleep = (time) => { return new Promise((resolve) => { setTimeout(resolve, time) }) };
 
-app.use((req,res,next)=>{
+app.use((req, res, next) => {
     const startTime = Date.now();
-    req.on('end',()=>{
+
+    req.on('end', () => {
         const endTime = Date.now();
-        calls.record(endTime-startTime,{
+        calls.record(endTime - startTime, {
             route: req.route?.path,
             status: res.statusCode,
             method: req.method
@@ -24,15 +32,30 @@ app.use((req,res,next)=>{
 })
 
 app.get('/employees', async (req, res) => {
+   
 
-    if(req.query['fail']){
+    if (req.query['fail']) {
+        counter.add(1, {
+            'route': 'employees',
+            'name': 'employee-fail'
+        });
         return res.sendStatus(500)
     }
 
     if (req.query['slow']) {
+        counter.add(1, {
+            'route': 'employees',
+            'name': 'employee-slow'
+        });
         await sleep(1000);
     }
-    
+    else{
+        counter.add(1, {
+            'route': 'employees',
+            'name': 'employee'
+        });
+    }
+
     const employee = [
         {
             name: "Employee 1",
