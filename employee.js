@@ -37,7 +37,7 @@ app.get('/employees', async (req, res) => {
     if (req.query['fail']) {
         counter.add(1, {
             'route': 'employees',
-            'name': 'employee-fail'
+            'name': 'Fail'
         });
         return res.sendStatus(500)
     }
@@ -45,14 +45,14 @@ app.get('/employees', async (req, res) => {
     if (req.query['slow']) {
         counter.add(1, {
             'route': 'employees',
-            'name': 'employee-slow'
+            'name': 'Slow'
         });
         await sleep(1000);
     }
     else{
         counter.add(1, {
             'route': 'employees',
-            'name': 'employee'
+            'name': 'Success'
         });
     }
 
