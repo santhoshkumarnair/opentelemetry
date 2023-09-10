@@ -2,9 +2,10 @@ const { NodeSDK } = require('@opentelemetry/sdk-node');
 const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
 const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-proto')
 const { PrometheusExporter } = require('@opentelemetry/exporter-prometheus');
-const { MeterProvider } = require('@opentelemetry/sdk-metrics');
+const { MeterProvider, PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
 const { Resource } = require('@opentelemetry/resources');
 const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
+const { OTLPMetricExporter} = require('@opentelemetry/exporter-metrics-otlp-proto');
 
 function start(serviceName) {
 
