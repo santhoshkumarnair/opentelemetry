@@ -8,6 +8,8 @@ const axios = require("axios")
 
 const calls = meter.createHistogram('http-calls');
 
+const sleep = (time: number) => { return new Promise((resolve) => { setTimeout(resolve, time) }) };
+
 app.use((req,res,next)=>{
     const startTime = Date.now();
     req.on('end',()=>{
@@ -24,8 +26,13 @@ app.use((req,res,next)=>{
 app.get('/employees', async (req, res) => {
 
     if(req.query['fail']){
-        res.sendStatus(500)
+        return res.sendStatus(500)
     }
+
+    if (req.query['slow']) {
+        await sleep(1000);
+    }
+    
     const employee = [
         {
             name: "Employee 1",
