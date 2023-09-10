@@ -23,6 +23,14 @@ services:
     environment:
       - OTEL_LOG_LEVEL=ERROR
       - NODE_ENV=production
+  prometheus:
+      image: prom/prometheus
+      command:
+        - '--config.file=/etc/prometheus/prometheus.yml'
+      volumes:
+        - ./prometheus/:/etc/prometheus/
+      ports:
+        - 9090:9090
   collector:
     image: otel/opentelemetry-collector-contrib:latest
     volumes: 
@@ -31,3 +39,4 @@ services:
     ports:
       - "4317:4317"
       - "4318:4318"
+      - "8889:8889"
