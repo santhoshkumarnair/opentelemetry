@@ -23,9 +23,6 @@ exporters:
     namespace: otel
 
 service:
-  telemetry:
-    logs:
-      level: "debug"
   extensions: [basicauth/otlp]
   pipelines:
     traces:
