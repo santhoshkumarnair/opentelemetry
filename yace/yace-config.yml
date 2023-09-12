@@ -15,7 +15,7 @@ discovery:
           statistics: [Sum]
         - name: IntegrationLatency
           statistics: [Sum]
-    type: ec2
+    - type: ec2
       regions: [ap-southeast-2]
       roles:
         - roleArn: arn:aws:iam::788132149295:instance-profile/Yacerole
