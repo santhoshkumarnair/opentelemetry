@@ -2,7 +2,7 @@ apiVersion: v1alpha1
 sts-region: ap-southeast-2
 discovery:
   jobs:
-    - type: apigateway
+    - type: AWS/ApiGateway
       regions: [ap-southeast-2]
       roles:
         - roleArn: arn:aws:iam::788132149295:role/yace-cloudwatch-metrics
@@ -15,7 +15,7 @@ discovery:
           statistics: [Sum]
         - name: IntegrationLatency
           statistics: [Sum]
-    - type: ec2
+    - type: AWS/EC2
       regions: [ap-southeast-2]
       roles:
         - roleArn: arn:aws:iam::788132149295:role/yace-cloudwatch-metrics
