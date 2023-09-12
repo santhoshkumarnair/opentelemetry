@@ -40,6 +40,7 @@ services:
       - "4317:4317"
       - "4318:4318"
       - "8889:8889"
+      - "8082:8082"
   yace:
     image: ghcr.io/nerdswords/yet-another-cloudwatch-exporter:v0.55.0
     restart: always
