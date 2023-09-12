@@ -44,9 +44,7 @@ services:
     image: ghcr.io/nerdswords/yet-another-cloudwatch-exporter:v0.55.0
     restart: always
     expose: 
-      - 8082
+      - 8082:8082
     volumes:
-      - ./yace/yace-config.yaml:/tmp/config.yml
-    command:
-      - -listen-address=:8082
-      - -config.file=/tmp/config.yml
+      - ./yace/yace-config.yml:/etc/config.yml
+    command: ["--config.file=/etc/config.yml"]
