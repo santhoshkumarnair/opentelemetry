@@ -10,7 +10,7 @@ receivers:
       scrape_configs:
         - job_name: "yace"
           static_configs:
-            - targets: ["localhost:8082"]
+            - targets: ["yace:8082"]
 
 extensions:
   basicauth/otlp:
