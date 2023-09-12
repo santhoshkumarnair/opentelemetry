@@ -10,10 +10,10 @@ discovery:
       length: 300
       metrics:
         - name: Count
-          statistics: [Sum]
+          statistics: [SampleCount, Sum]
         - name: Latency
           statistics: [Sum]
-        - name: IntegrationLatency
+        - name: 5xx
           statistics: [Sum]
     - type: AWS/EC2
       regions: [ap-southeast-2]
@@ -21,10 +21,9 @@ discovery:
         - roleArn: arn:aws:iam::788132149295:role/yace-cloudwatch-metrics
       period: 300
       length: 300
-      enableMetricData: true
       metrics:
         - name: CPUUtilization
-          statistics: [ Sum ]
+          statistics: [ Average ]
         - name: DiskReadBytes
           statistics: [ Sum ]
         - name: DiskWriteBytes
