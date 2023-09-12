@@ -41,7 +41,7 @@ services:
       - "4318:4318"
       - "8889:8889"
   yace:
-    image: quay.io/invisionag/yet-another-cloudwatch-exporter:v0.54.1
+    image: ghcr.io/nerdswords/yet-another-cloudwatch-exporter:v0.55.0
     restart: always
     expose: 
       - 8082
