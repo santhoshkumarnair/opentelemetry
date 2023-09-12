@@ -50,5 +50,3 @@ services:
     command:
       - -listen-address=:8082
       - -config.file=/tmp/config.yml
-    networks:
-      - monitoring
