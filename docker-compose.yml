@@ -40,3 +40,15 @@ services:
       - "4317:4317"
       - "4318:4318"
       - "8889:8889"
+  yace:
+    image: yet-another-cloudwatch-exporter:v0.55.0
+    restart: always
+    expose: 
+      - 8082
+    volumes:
+      - ./yace/yace-config.yaml:/tmp/config.yml
+    command:
+      - -listen-address=:8082
+      - -config.file=/tmp/config.yml
+    networks:
+      - monitoring

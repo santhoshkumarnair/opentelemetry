@@ -1,0 +1,39 @@
+apiVersion: v1alpha1
+sts-region: ap-southeast-2
+discovery:
+  jobs:
+    - type: apigateway
+      regions: [ap-southeast-2]
+      roles:
+        - roleArn: arn:aws:iam::788132149295:instance-profile/Yacerole
+      period: 300
+      length: 300
+      metrics:
+        - name: Count
+          statistics: [Sum]
+        - name: Latency
+          statistics: [Sum]
+        - name: IntegrationLatency
+          statistics: [Sum]
+    type: ec2
+      regions: [ap-southeast-2]
+      roles:
+        - roleArn: arn:aws:iam::788132149295:instance-profile/Yacerole
+      period: 300
+      length: 300
+      enableMetricData: true
+      metrics:
+        - name: CPUUtilization
+          statistics: [ Sum ]
+        - name: DiskReadBytes
+          statistics: [ Sum ]
+        - name: DiskWriteBytes
+          statistics: [ Sum ]
+        - name: CPUCreditUsage
+          statistics: [ Sum ]
+        - name: CPUCreditBalance
+          statistics: [ Sum ]
+        - name: CPUSurplusCreditBalance
+          statistics: [ Sum ]
+        - name: CPUSurplusCreditsCharged
+          statistics: [ Sum ]
