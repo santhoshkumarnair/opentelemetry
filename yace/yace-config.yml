@@ -20,10 +20,10 @@ discovery:
       roles:
         - roleArn: arn:aws:iam::788132149295:role/yace-cloudwatch-metrics
       period: 300
-      length: 300
+      length: 3600
       metrics:
         - name: CPUUtilization
-          statistics: [ Average ]
+          statistics: [ Sum ]
         - name: DiskReadBytes
           statistics: [ Sum ]
         - name: DiskWriteBytes
