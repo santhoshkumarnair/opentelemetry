@@ -2,7 +2,7 @@ const winston = require('winston');
 const logConfiguration = {
     'transports': [
         new winston.transports.File({
-            filename: '/usr/src/logs/file.log'
+            filename: '/usr/src/app/logs/file.log'
         })
     ],
     format: winston.format.combine(
