@@ -23,7 +23,7 @@ discovery:
       length: 3600
       metrics:
         - name: CPUUtilization
-          statistics: [ Sum ]
+          statistics: [ Sum, Average]
         - name: DiskReadBytes
           statistics: [ Sum ]
         - name: DiskWriteBytes

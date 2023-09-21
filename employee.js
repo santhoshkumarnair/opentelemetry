@@ -4,6 +4,7 @@ const express = require('express');
 const PORT = parseInt(process.env.PORT || '8080');
 const app = express();
 const axios = require("axios")
+const logger = require("./winston.js")
 
 
 const calls = meter.createHistogram('http-calls');
@@ -33,16 +34,18 @@ app.use((req, res, next) => {
 
 app.get('/employees', async (req, res) => {
    
-
+    logger.info("Get employees API request")
     if (req.query['fail']) {
         counter.add(1, {
             'route': 'employees',
             'name': 'Fail'
         });
+        logger.info("Get employees API fail request")
         return res.sendStatus(500)
     }
 
     if (req.query['slow']) {
+        logger.info("Get employees API slow request")
         counter.add(1, {
             'route': 'employees',
             'name': 'Slow'
@@ -50,6 +53,7 @@ app.get('/employees', async (req, res) => {
         await sleep(1000);
     }
     else{
+        logger.info("Get employees API success request")
         counter.add(1, {
             'route': 'employees',
             'name': 'Success'
