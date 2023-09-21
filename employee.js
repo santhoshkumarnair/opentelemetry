@@ -4,7 +4,7 @@ const express = require('express');
 const PORT = parseInt(process.env.PORT || '8080');
 const app = express();
 const axios = require("axios")
-const logger = require("./winston.js")
+const logger = require("./logger.js")
 
 
 const calls = meter.createHistogram('http-calls');

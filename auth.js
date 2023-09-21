@@ -3,7 +3,7 @@ start('auth-service');
 const express = require('express');
 const PORT = parseInt(process.env.PORT || '8080');
 const app = express();
-const logger = require("./winston.js")
+const logger = require("./logger.js")
 
 
 app.get('/auth', async (req, res) => {
