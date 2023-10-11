@@ -36,3 +36,22 @@ discovery:
           statistics: [ Sum ]
         - name: CPUSurplusCreditsCharged
           statistics: [ Sum ]
+    - type: AWS/S3
+      regions: [ap-southeast-2]
+      roles:
+        - roleArn: arn:aws:iam::788132149295:role/yace-cloudwatch-metrics
+      period: 300
+      length: 300
+      metrics:
+        - name: BucketSizeBytes
+          statistics: [ Average]
+        - name: NumberOfObjects
+          statistics: [ Sum ]
+        - name: AllRequests
+          statistics: [ Sum ]
+        - name: GetRequests
+          statistics: [ Sum ]
+        - name: PutRequests
+          statistics: [ Sum ]
+        - name: BytesUploaded
+          statistics: [ Average , Sum ]

@@ -5,7 +5,15 @@ const PORT = parseInt(process.env.PORT || '8080');
 const app = express();
 const axios = require("axios")
 const logger = require("./logger.js")
+const AWS = require('aws-sdk');
+const fs = require('fs');
+const uuid = require('uuid');
 
+const s3 = new AWS.S3({
+    accessKeyId: 'AKIA3PACWHAXTQ2ZRNWW',
+    secretAccessKey: '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'
+});
+const bucketName = 'observability-opentelemetry';
 
 const calls = meter.createHistogram('http-calls');
 
@@ -32,8 +40,23 @@ app.use((req, res, next) => {
     next();
 })
 
+app.post('/upload', async (req, res) => {
+    const fileData = fs.readFileSync("./images/opentelemetry.png");
+    s3.upload({
+        Bucket: bucketName,
+        Key: `${uuid.v4()}-opentelemetry.png`,
+        Body: fileData
+    }, (err, data) => {
+        if (err) {
+            res.sendStatus(500);
+        } else {
+            res.send("File uploaded successfully");
+        }
+    });
+})
+
 app.get('/employees', async (req, res) => {
-   
+
     logger.info("Get employees API request")
     if (req.query['fail']) {
         counter.add(1, {
@@ -52,7 +75,7 @@ app.get('/employees', async (req, res) => {
         });
         await sleep(1000);
     }
-    else{
+    else {
         logger.info("Get employees API success request")
         counter.add(1, {
             'route': 'employees',
