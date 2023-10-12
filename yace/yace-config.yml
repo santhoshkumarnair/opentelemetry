@@ -37,7 +37,7 @@ discovery:
         - name: CPUSurplusCreditsCharged
           statistics: [ Sum ]
     - type: AWS/S3
-      regions: [ap-southeast-2]
+      regions: [ap-south-1]
       roles:
         - roleArn: arn:aws:iam::788132149295:role/yace-cloudwatch-metrics
       period: 300
@@ -46,7 +46,7 @@ discovery:
         - name: BucketSizeBytes
           statistics: [ Average]
         - name: NumberOfObjects
-          statistics: [ Sum ]
+          statistics: [ Average ]
         - name: AllRequests
           statistics: [ Sum ]
         - name: GetRequests
