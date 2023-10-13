@@ -64,6 +64,7 @@ discovery:
       period: 300
       length: 3600
       enableMetricData: true
+      metrics:
         - name: Duration
           statistics: [ Sum, Maximum, Minimum, Average ]
         - name: Invocations
