@@ -70,3 +70,5 @@ discovery:
           statistics: [ Sum ]
         - name: Errors
           statistics: [ Sum ]
+        - name: Throttles
+          statistics: [ Sum ]
