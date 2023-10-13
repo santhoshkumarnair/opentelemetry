@@ -57,7 +57,7 @@ discovery:
           statistics: [ Average , Sum ]
         - name: ListRequests
           statistics: [ Sum ]
-    - type: lambda
+    - type: AWS/Lambda
       regions: [ap-south-1]
       roles:
         - roleArn: arn:aws:iam::788132149295:role/yace-cloudwatch-metrics
