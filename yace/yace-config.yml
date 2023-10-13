@@ -57,3 +57,16 @@ discovery:
           statistics: [ Average , Sum ]
         - name: ListRequests
           statistics: [ Sum ]
+    - type: lambda
+      regions: [ap-south-1]
+      roles:
+        - roleArn: arn:aws:iam::788132149295:role/yace-cloudwatch-metrics
+      period: 300
+      length: 3600
+      enableMetricData: true
+        - name: Duration
+          statistics: [ Sum, Maximum, Minimum, Average ]
+        - name: Invocations
+          statistics: [ Sum ]
+        - name: Errors
+          statistics: [ Sum ]
