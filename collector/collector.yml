@@ -32,7 +32,7 @@ exporters:
     send_timestamps: true
     namespace: otel
   prometheusremotewrite:
-    endpoint: https://prometheus-prod-13-prod-us-east-0.grafana.net/api/prom/push
+    endpoint: https://otlp-gateway-prod-us-east-0.grafana.net/api/prom/push
     auth:
       authenticator: basicauth/prw
 service:
