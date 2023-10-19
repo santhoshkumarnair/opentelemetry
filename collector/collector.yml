@@ -17,6 +17,10 @@ extensions:
     client_auth:
       username: 736067
       password: glc_eyJvIjoiOTQwNjE0IiwibiI6InN0YWNrLTczNjA2Ny1odC13cml0ZS1uZXd0ZW1wb3Rva2VuIiwiayI6IjBwMzI2MHVyaHI1UWlCRXdKRTIwOFMzZCIsIm0iOnsiciI6InByb2QtdXMtZWFzdC0wIn19
+  basicauth/prw:
+    client_auth:
+      username: 1180050
+      password: glc_eyJvIjoiOTQwNjE0IiwibiI6InN0YWNrLTczNjA2Ny1obS13cml0ZS1wcm9tZXRoZXVzcmVtb3RlIiwiayI6IlA2aTJNZWJ5SmtEODRrMzU3eDdTaTlONiIsIm0iOnsiciI6InByb2QtdXMtZWFzdC0wIn19
 
 exporters:
   otlphttp:
@@ -29,9 +33,8 @@ exporters:
     namespace: otel
   prometheusremotewrite:
     endpoint: https://prometheus-prod-13-prod-us-east-0.grafana.net/api/prom/push
-    basic_auth:
-      username: 1180050
-      password: glc_eyJvIjoiOTQwNjE0IiwibiI6InN0YWNrLTczNjA2Ny1odC13cml0ZS1uZXd0ZW1wb3Rva2VuIiwiayI6IjBwMzI2MHVyaHI1UWlCRXdKRTIwOFMzZCIsIm0iOnsiciI6InByb2QtdXMtZWFzdC0wIn19
+    auth:
+      authenticator: basicauth/prw
 service:
   extensions: [basicauth/otlp]
   pipelines:
