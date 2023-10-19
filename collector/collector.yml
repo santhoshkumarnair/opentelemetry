@@ -27,7 +27,11 @@ exporters:
     endpoint: "collector:8889"
     send_timestamps: true
     namespace: otel
-
+  prometheusremotewrite:
+    endpoint: https://prometheus-prod-13-prod-us-east-0.grafana.net/api/prom/push
+    basic_auth:
+      username: 1180050
+      password: glc_eyJvIjoiOTQwNjE0IiwibiI6InN0YWNrLTczNjA2Ny1odC13cml0ZS1uZXd0ZW1wb3Rva2VuIiwiayI6IjBwMzI2MHVyaHI1UWlCRXdKRTIwOFMzZCIsIm0iOnsiciI6InByb2QtdXMtZWFzdC0wIn19
 service:
   extensions: [basicauth/otlp]
   pipelines:
