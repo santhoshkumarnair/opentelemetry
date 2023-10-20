@@ -33,10 +33,11 @@ exporters:
     namespace: otel
   prometheusremotewrite:
     endpoint: https://prometheus-prod-13-prod-us-east-0.grafana.net/api/prom/push
+    send_timestamps: true
     auth:
       authenticator: basicauth/prw
 service:
-  extensions: [basicauth/otlp]
+  extensions: [basicauth/otlp, basicauth/prw]
   pipelines:
     traces:
       receivers: [otlp]
