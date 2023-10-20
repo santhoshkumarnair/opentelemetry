@@ -21,7 +21,9 @@ extensions:
     client_auth:
       username: 1180050
       password: glc_eyJvIjoiOTQwNjE0IiwibiI6InN0YWNrLTczNjA2Ny1obS13cml0ZS1wcm9tZXRoZXVzcmVtb3RlIiwiayI6IlA2aTJNZWJ5SmtEODRrMzU3eDdTaTlONiIsIm0iOnsiciI6InByb2QtdXMtZWFzdC0wIn19
-
+processors:
+  batch:
+  
 exporters:
   otlphttp:
     auth:
